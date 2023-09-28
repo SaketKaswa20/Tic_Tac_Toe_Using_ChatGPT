@@ -1,114 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tic Tac Toe</title>
-  <style>
-    /* CSS styles omitted for brevity */
-    .board {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .cell {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px;
-      font-size: 48px;
-      background-color: #f2f2f2;
-      cursor: pointer;
-    }
-
-    .message {
-      margin-top: 20px;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="board">
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+  <h1>Futuristic Tic-Tac-Toe</h1>
+  <div class="board-container">
+    <div class="board">
+      <div class="cell" id="cell-0"></div>
+      <div class="cell" id="cell-1"></div>
+      <div class="cell" id="cell-2"></div>
+      <div class="cell" id="cell-3"></div>
+      <div class="cell" id="cell-4"></div>
+      <div class="cell" id="cell-5"></div>
+      <div class="cell" id="cell-6"></div>
+      <div class="cell" id="cell-7"></div>
+      <div class="cell" id="cell-8"></div>
+    </div>
+  </div>
+  <button id="restart-button">Restart</button>
+
+  <div class="winner-popup" id="winner-popup">
+    <div class="popup-content">
+      <p class="popup-message" id="popup-message"></p>
+      <button class="start-new-game-button" id="start-new-game-button">Start New Game</button>
+    </div>
   </div>
 
-  <div class="message"></div>
-
-  <script>
-    const cells = document.querySelectorAll('.cell');
-    const message = document.querySelector('.message');
-    let currentPlayer = 'X';
-    let gameActive = true;
-    let moves = 0;
-    const winningCombinations = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-
-    function handleCellClick(event) {
-      const cell = event.target;
-      const cellIndex = Array.from(cells).indexOf(cell);
-
-      if (cell.textContent !== '' || !gameActive) {
-        return;
-      }
-
-      cell.textContent = currentPlayer;
-      cell.classList.add(currentPlayer);
-      moves++;
-
-      if (checkForWin(currentPlayer)) {
-        endGame(`Player ${currentPlayer} wins!`);
-      } else if (moves === 9) {
-        endGame("It's a tie!");
-      } else {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        message.textContent = `Player ${currentPlayer}'s turn`;
-      }
-    }
-
-    function checkForWin(player) {
-      return winningCombinations.some(combination => {
-        return combination.every(index => {
-          return cells[index].classList.contains(player);
-        });
-      });
-    }
-
-    function endGame(messageText) {
-      message.textContent = messageText;
-      gameActive = false;
-    }
-
-    function resetGame() {
-      currentPlayer = 'X';
-      gameActive = true;
-      moves = 0;
-      message.textContent = `Player ${currentPlayer}'s turn`;
-      cells.forEach(cell => {
-        cell.textContent = '';
-        cell.classList.remove('X', 'O');
-      });
-    }
-
-    cells.forEach(cell => {
-      cell.addEventListener('click', handleCellClick);
-    });
-
-    document.addEventListener('DOMContentLoaded', resetGame);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
