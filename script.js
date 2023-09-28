@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Display the winner's popup message
         popupMessage.textContent = `Player ${cellA} wins!`;
         winnerPopup.style.display = 'flex';
+      } else{
+        popupMessage.textContent= 'It's a Tie';
+          winnerPopup.style.display='flex;
       }
     });
   }
