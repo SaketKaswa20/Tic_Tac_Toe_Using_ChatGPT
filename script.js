@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
   restartButton.addEventListener('click', restartGame);
   undoMoveButton.addEventListener('click', undoMove);
 
+  startNewGameButton.addEventListener('click', () => {
+    // Hide the winner's popup
+    winnerPopup.style.display = 'none';
+
+    // Start a new game
+    restartGame();
+  });
+
   function handleCellClick(cell, index) {
     if (!gameEnded && cell.innerHTML === '') {
       moveHistory.push({ index, player: currentPlayer });
