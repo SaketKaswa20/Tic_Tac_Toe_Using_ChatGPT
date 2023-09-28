@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1f2735;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 36px;
+  padding-bottom: 20px;
+}
+
+.board-container {
+  transform-style: preserve-3d;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #fff;
+  background-color: #303b4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  transform: scale(1.1);
+}
+
+#restart-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #3c4859;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+  background-color: #2b3645;
+}
+
+.winner-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background-color: #1f2735;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.popup-message {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.start-new-game-button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.start-new-game-button:hover {
+  background-color: #0056b3;
+}
